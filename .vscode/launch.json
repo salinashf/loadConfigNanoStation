@@ -1,0 +1,30 @@
+{
+    // Use IntelliSense para saber los atributos posibles.
+    // Mantenga el puntero para ver las descripciones de los existentes atributos.
+    // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Dbg: login.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/loginTest.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "purpose": [
+                "debug-in-terminal"
+            ]
+        },
+        {
+            "name": "Dbg: main.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "purpose": [
+                "debug-in-terminal"
+            ]
+        }
+    ]
+}
