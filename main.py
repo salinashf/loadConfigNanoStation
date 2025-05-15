@@ -11,6 +11,7 @@ class LoadConfigNS:
         self.driver.get(os.getenv("URL_NS"))
         self.driver.implicitly_wait(10)
         self.driver.maximize_window()
+        time.sleep(5)
 
     def login(self, username, password):
         print("Iniciando sesión...")
@@ -26,14 +27,15 @@ class LoadConfigNS:
         settings_page.click_tabSettings()
         time.sleep(5)
         settings_page.click_uploadFile(file_path)
-        settings_page.click_cancelChange()
         time.sleep(5)
+        settings_page.click_confirmChange()
+        time.sleep(15)
 
     def logout(self):
         print("Cerrando sesión...")
         logout = LogoutPage(self.driver)
         logout.click_logout()
-        time.sleep(5)
+        time.sleep(15)
 
     def close_driver(self):
         print("Finalizando prueba...")
