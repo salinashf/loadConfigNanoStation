@@ -5,6 +5,8 @@ from page.logoutPage import LogoutPage
 from page.settingsPage import SettingsPage
 from dotenv import load_dotenv
 import os
+
+
 class LoadConfigNS:
     def __init__(self):
         self.driver = webdriver.Firefox()
@@ -29,7 +31,7 @@ class LoadConfigNS:
         settings_page.click_uploadFile(file_path)
         time.sleep(5)
         settings_page.click_confirmChange()
-        time.sleep(15)
+        time.sleep(5)
 
     def logout(self):
         print("Cerrando sesión...")
