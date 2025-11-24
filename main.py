@@ -4,7 +4,9 @@ from page.loginPage import LoginPage
 from page.logoutPage import LogoutPage
 from page.settingsPage import SettingsPage
 from dotenv import load_dotenv
+import argparse
 import os
+import sys
 
 
 class LoadConfigNS:
@@ -45,10 +47,30 @@ class LoadConfigNS:
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Este script permite cargar la configuracion de NanoStation")
+    parser.add_argument("-m", "--mode", type=str,
+                        help="El modo de operación del script 'Dia' o 'Noche'", required=True)
+    if len(sys.argv) == 1:
+        parser.print_help(sys.stderr)
+        sys.exit(1)
+    args = parser.parse_args()
+    v_mode = args.mode
+    if v_mode not in ["Dia", "Noche"]:
+        print("El modo de operación debe ser 'Dia' o 'Noche'")
+        parser.print_help(sys.stderr)
+    print(f"Modo de operación: {v_mode}")
+    # Cargar las variables de entorno desde el archivo .env
     load_dotenv()
+    v_path = os.getenv("PATH_SETTINGS")
+    v_path = v_path.replace("{{MODE}}", v_mode)
+    os.environ["PATH_SETTINGS"] = v_path
+    print("La configuracion que cargaremos es: " + os.getenv("PATH_SETTINGS"))
+
     ldConfigNS = LoadConfigNS()
     try:
         ldConfigNS.login(os.getenv("USER"), os.getenv("PASSWORD"))
+        time.sleep(5)
         ldConfigNS.update_settings(os.getenv("PATH_SETTINGS"))
         ldConfigNS.logout()
     except Exception as e:
