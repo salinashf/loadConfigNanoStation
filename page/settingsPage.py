@@ -27,6 +27,12 @@ class SettingsPage():
         self.driver.find_element(
             By.XPATH, self.load_settings_button_xpath).click()
 
+    def check_complete_settings(self):
+        Locators.check_exist_element(self.driver, By.XPATH, self.load_settings_button_xpath)
+
+    def check_complete_upload_file(self):
+        Locators.check_exist_element(self.driver, By.XPATH, self.confirm_settings_button_xpath)
+
     def click_cancelChange(self):
 
         original_window = self.driver.current_window_handle

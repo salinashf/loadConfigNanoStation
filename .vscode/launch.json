@@ -21,6 +21,10 @@
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
             "console": "integratedTerminal",
+            "args": [
+                "-m",
+                "Dia"
+            ],
             "justMyCode": true,
             "purpose": [
                 "debug-in-terminal"
